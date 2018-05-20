@@ -1,7 +1,7 @@
 package main
 
 import (
-	"os"
+	"github.com/namsral/flag"
 	"github.com/go-vgo/robotgo"
 )
 
@@ -17,17 +17,20 @@ import (
  */
 
 func main() {
-	//argLength := len(os.Args[2])-1;
-
-	//allArgs := os.Args[1:]
-	key := os.Args[1]
-	action := os.Args[2]
-	modifier := os.Args[3]
-
+	var key string
+	var action string
+	var modifier string
+	flag.StringVar(&key, "key", "", "key to press")
+	flag.StringVar(&action, "action", "", "press down or up?")
+	flag.StringVar(&modifier, "modifier", "null", "shift, alt or ctrl")
+	flag.Parse()
+	/*fmt.Print("key:", key)
+	fmt.Println("modifier: ", modifier)*/
 	/*fmt.Println(argLength)
 	fmt.Println(allArgs)
 	fmt.Println(key)
 	fmt.Println(action)
 	fmt.Println(modifier)*/
+	//robotgo.KeyToggle(key, action, modifier)
 	robotgo.KeyToggle(key, action, modifier)
 }
