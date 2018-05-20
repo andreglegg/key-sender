@@ -18,10 +18,10 @@ import (
 
 func main() {
 	var key string
-	var action string
+	//var action string
 	var modifier string
 	flag.StringVar(&key, "key", "", "key to press")
-	flag.StringVar(&action, "action", "", "press down or up?")
+	//flag.StringVar(&action, "action", "", "press down or up?")
 	flag.StringVar(&modifier, "modifier", "null", "shift, alt or ctrl")
 	flag.Parse()
 	/*fmt.Print("key:", key)
@@ -32,5 +32,10 @@ func main() {
 	fmt.Println(action)
 	fmt.Println(modifier)*/
 	//robotgo.KeyToggle(key, action, modifier)
-	robotgo.KeyToggle(key, action, modifier)
+	//robotgo.KeyToggle(key, action, modifier)
+	if modifier == "null" {
+		robotgo.KeyTap(key)
+	} else {
+		robotgo.KeyTap(key, modifier)
+	}
 }
